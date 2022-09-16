@@ -1,0 +1,803 @@
+{
+	"info": {
+		"_postman_id": "a0fd967d-5c77-4a2e-a6ab-26fd805f7df4",
+		"name": "CURSOS-USUARIOS-KUBERNETES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6500017"
+	},
+	"item": [
+		{
+			"name": "USERS GATEWAY",
+			"item": [
+				{
+					"name": "KILL APP",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_usuarios}}/crash",
+							"host": [
+								"{{host_usuarios}}"
+							],
+							"path": [
+								"crash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_gateway}}/api/usuarios",
+							"host": [
+								"{{host_gateway}}"
+							],
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Luis\",\r\n    \"email\": \"luis@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_usuarios}}",
+							"host": [
+								"{{host_usuarios}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Luis MOD\",\r\n    \"email\": \"luis@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_usuarios}}:8001/1",
+							"host": [
+								"{{host_usuarios}}"
+							],
+							"port": "8001",
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host_usuarios}}:8001/2",
+							"host": [
+								"{{host_usuarios}}"
+							],
+							"port": "8001",
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actuator Health",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_usuarios}}/actuator/health",
+							"host": [
+								"{{host_usuarios}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actuator Liveness",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_usuarios}}/actuator/health/liveness",
+							"host": [
+								"{{host_usuarios}}"
+							],
+							"path": [
+								"actuator",
+								"health",
+								"liveness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actuator Readiness",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_usuarios}}/actuator/health/readiness",
+							"host": [
+								"{{host_usuarios}}"
+							],
+							"path": [
+								"actuator",
+								"health",
+								"readiness"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "COURSES GATEWAY",
+			"item": [
+				{
+					"name": "Get Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_gateway}}/api/cursos",
+							"host": [
+								"{{host_gateway}}"
+							],
+							"path": [
+								"api",
+								"cursos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Curso 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_gateway}}/api/cursos",
+							"host": [
+								"{{host_gateway}}"
+							],
+							"path": [
+								"api",
+								"cursos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Curso 2 mod\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_gateway}}/api/cursos/4",
+							"host": [
+								"{{host_gateway}}"
+							],
+							"path": [
+								"api",
+								"cursos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host_gateway}}/api/cursos/1",
+							"host": [
+								"{{host_gateway}}"
+							],
+							"path": [
+								"api",
+								"cursos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Asign User To Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Luis\",\r\n    \"email\": \"luis@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_gateway}}/api/cursos/asignar-usuario/1",
+							"host": [
+								"{{host_gateway}}"
+							],
+							"path": [
+								"api",
+								"cursos",
+								"asignar-usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User By Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Fabio\",\r\n    \"email\": \"fabio@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_gateway}}/api/cursos/crear-usuario/4",
+							"host": [
+								"{{host_gateway}}"
+							],
+							"path": [
+								"api",
+								"cursos",
+								"crear-usuario",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User By Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"nombre\": \"Fabio\",\r\n    \"email\": \"fabio@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_gateway}}/api/cursos/eliminar-usuario/4",
+							"host": [
+								"{{host_gateway}}"
+							],
+							"path": [
+								"api",
+								"cursos",
+								"eliminar-usuario",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete CursoUsuario by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host_gateway}}/api/cursos/eliminar-curso-usuario/5",
+							"host": [
+								"{{host_gateway}}"
+							],
+							"path": [
+								"api",
+								"cursos",
+								"eliminar-curso-usuario",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Course Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_gateway}}/api/cursos/1",
+							"host": [
+								"{{host_gateway}}"
+							],
+							"path": [
+								"api",
+								"cursos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "KUBERNETES",
+			"item": [
+				{
+					"name": "USERS",
+					"item": [
+						{
+							"name": "KILL APP",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_usuarios}}/crash",
+									"host": [
+										"{{host_usuarios}}"
+									],
+									"path": [
+										"crash"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Users",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"connection": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_usuarios}}",
+									"host": [
+										"{{host_usuarios}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Luis\",\r\n    \"email\": \"luis@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_usuarios}}",
+									"host": [
+										"{{host_usuarios}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modify User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Luis MOD\",\r\n    \"email\": \"luis@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_usuarios}}:8001/1",
+									"host": [
+										"{{host_usuarios}}"
+									],
+									"port": "8001",
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host_usuarios}}:8001/2",
+									"host": [
+										"{{host_usuarios}}"
+									],
+									"port": "8001",
+									"path": [
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actuator Health",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"connection": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_usuarios}}/actuator/health",
+									"host": [
+										"{{host_usuarios}}"
+									],
+									"path": [
+										"actuator",
+										"health"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actuator Liveness",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"connection": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_usuarios}}/actuator/health/liveness",
+									"host": [
+										"{{host_usuarios}}"
+									],
+									"path": [
+										"actuator",
+										"health",
+										"liveness"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actuator Readiness",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"connection": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_usuarios}}/actuator/health/readiness",
+									"host": [
+										"{{host_usuarios}}"
+									],
+									"path": [
+										"actuator",
+										"health",
+										"readiness"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "COURSES",
+					"item": [
+						{
+							"name": "Get Courses",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_cursos}}",
+									"host": [
+										"{{host_cursos}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Course",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Curso 1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_cursos}}",
+									"host": [
+										"{{host_cursos}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modify Course",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Curso 2 mod\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_cursos}}/4",
+									"host": [
+										"{{host_cursos}}"
+									],
+									"path": [
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Course",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host_cursos}}/1",
+									"host": [
+										"{{host_cursos}}"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Asign User To Course",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Luis\",\r\n    \"email\": \"luis@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_cursos}}/asignar-usuario/1",
+									"host": [
+										"{{host_cursos}}"
+									],
+									"path": [
+										"asignar-usuario",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User By Course",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Fabio\",\r\n    \"email\": \"fabio@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_cursos}}/crear-usuario/4",
+									"host": [
+										"{{host_cursos}}"
+									],
+									"path": [
+										"crear-usuario",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User By Course",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 6,\r\n    \"nombre\": \"Fabio\",\r\n    \"email\": \"fabio@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_cursos}}/eliminar-usuario/4",
+									"host": [
+										"{{host_cursos}}"
+									],
+									"path": [
+										"eliminar-usuario",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete CursoUsuario by ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host_cursos}}/eliminar-curso-usuario/5",
+									"host": [
+										"{{host_cursos}}"
+									],
+									"path": [
+										"eliminar-curso-usuario",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Course Detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host_cursos}}/1",
+									"host": [
+										"{{host_cursos}}"
+									],
+									"path": [
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

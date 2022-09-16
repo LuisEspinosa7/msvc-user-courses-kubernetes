@@ -1,0 +1,105 @@
+### KUBERNETES INSTRUCTIONS ####
+
+
+https://kubernetes.io/docs/tasks/tools/
+
+https://minikube.sigs.k8s.io/docs/start/
+
+https://stackoverflow.com/questions/62539604/how-to-access-nodeport-in-minikube-with-docker-driver
+
+> DRIVER
+minikube start --driver=docker
+
+> PLAYGROUND
+- MYSQL
+kubectl.exe create deployment mysql8 --image=mysql:8 --port=3306 --dry-run=client -o yaml > deployment-mysql.yaml
+
+kubectl.exe apply -f .\deployment-mysql.yaml
+
+kubectl.exe expose deployment mysql8 --port=3306 --type=ClusterIP
+
+kubectl get service mysql8 -o yaml > svc-mysql.yaml
+
+kubectl.exe get services
+
+kubectl.exe describe svc mysql8
+
+- USUARIOS
+kubectl.exe create deployment msvc-usuarios --image=luisllanos8/usuarios --port=8001 
+kubectl create deployment msvc-usuarios --image=luisllanos8/usuarios:latest --port=8001 --dry-run=client -o yaml > deployment-usuarios.yaml
+
+kubectl.exe expose deployment msvc-usuarios --port=8001 --type=LoadBalancer
+
+kubectl.exe get svc
+kubectl get service msvc-usuarios -o yaml > svc-usuarios.yaml
+
+> EXPOSE SERVICE (IMPORTANT--------------------)
+minikube service msvc-usuarios --url
+
+
+> CHANGING IMAGES USUARIOS
+docker build -t usuarios . -f .\msvc-usuarios\Dockerfile
+docker tag usuarios luisllanos8/usuarios (NO SIRVE)
+docker tag usuarios luisllanos8/usuarios:v2
+docker push luisllanos8/usuarios:v2 
+
+
+
+
+> CHANGING IMAGES CURSOS
+docker build -t cursos . -f .\msvc-cursos\Dockerfile
+docker tag cursos luisllanos8/cursos (NO SIRVE)
+docker tag cursos luisllanos8/cursos:v2
+docker push luisllanos8/cursos:v2 
+
+
+> CHANGING IMAGES GATEWAY
+docker build -t gateway . -f .\msvc-gateway\Dockerfile
+docker tag gateway luisllanos8/gateway:latest
+docker push luisllanos8/gateway:latest 
+
+
+> CHANGE POD IN REAL TIME
+kubectl get pods 
+kubectl set image deployment msvc-usuarios usuarios=luisllanos8/usuarios:v2
+
+> SCALE
+kubectl scale deployment msvc-usuarios --replicas=3
+
+> ACCEDER A SERVICIOS
+minikube service msvc-usuarios --url
+minikube service msvc-cursos --url
+
+> RECREATE
+kubectl delete -f .\deployment-usuarios.yaml
+kubectl apply -f .\deployment-usuarios.yaml
+
+
+> CURSOS AND POSTGRES
+kubectl apply -f .\deployment-usuarios.yaml
+kubectl apply -f .\deployment-usuarios.yaml
+
+
+
+
+> SPRING KUBERNETES LIBRARY FOR ACCESING KUBERNETES DETAILS
+kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default
+
+
+> TEST LOAD BALANCING
+disable the keep-alive header on postman
+
+> HEALTH CHECKS
+livenessProbe
+readinessProbe
+
+
+> RESOURCES REQUESTS AND LIMIT
+MEMORY in Megabytes
+CPU in MiliCores  -> 1 Core = 1000 MiliCores
+
+
+> GATEWAY DEPLOY AND SVC
+kubectl apply -f .\gateway.yaml
+minikube service msvc-gateway --url
+
