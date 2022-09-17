@@ -154,7 +154,7 @@ Some pictures of the project:
 <table style="width:100%">
   <tr>
     <td>
-  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865876-b5a52c6a-738d-4358-be0d-4a1732e0c576.PN">
+  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865876-b5a52c6a-738d-4358-be0d-4a1732e0c576.PNG">
 	  </td>
     <td>
 	<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865886-c2596471-2126-4d2e-bb43-5c447d4c3a95.PNG">
