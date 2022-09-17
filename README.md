@@ -1,6 +1,6 @@
-# Courses Users - EXAMPLE MICROSERVICES WITH KUBERNETES (BACKEND)
+# Courses Users - EXAMPLE MICROSERVICES WITH AWS EKS (BACKEND)
 
-Courses Users are microservices for creating courses and add user to them. It's quite useful to play around with different architectures and technologies. They comunicate to each other by using feign client and are over kubernetes pods in this specific approach (repository), you may find different deployment options on the other repositories in my github. This WEB APP's backend was developed by Luis Espinosa Llanos using a microservice approach and the following technologies and tools were used: 
+Courses Users are microservices for creating courses and add user to them. It's quite useful to play around with different architectures and technologies. They comunicate to each other by using feign client and are over AWS EKS kubernetes in this specific approach (repository), you may find different deployment options on the other repositories in my github. This WEB APP's backend was developed by Luis Espinosa Llanos using a microservice approach and the following technologies and tools were used: 
 
 <table style="width:100%">
   <tr>
@@ -64,7 +64,7 @@ Courses Users are microservices for creating courses and add user to them. It's 
   	Deployment	
     </td>
     <td>
-  	Kubernetes - Minikube (Local)
+  	Kubernetes - AWS EKS
     </td>
   </tr>
 </table>
@@ -73,14 +73,14 @@ It was written using the best practices for instance, a controller, service and 
 dependecy injection, inversion of control, abstractions, design patterns and more... 
 
 ## Video
-A video exposing the functionality of the proyect in local environment.
+A video exposing the functionality of the proyect in AWS EKS
 
 1. https://youtu.be/6ELtLr9F4PM
 
 
-## EKS (Elastic Kubernetes Service) implementation on AWS
-You will find the EKS deployment implementation on the branch: 
-- <b> eks-courses-users </b>
+## MINIKUBE (KUBERNETES LOLCA) implementation:
+You will find the MINIKUBE implementation on the branch: 
+- <b> master </b>
 
 ## Development Resources
 I provide the following resources:
@@ -98,18 +98,29 @@ I provide the following resources:
 
 
 
-
-
 ## Pictures
 Some pictures of the project:
 
 <table style="width:100%">
   <tr>
     <td>
-  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190690269-0d39cb03-c296-46d7-b8ed-300bc31dba53.PNG">
+  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865791-9555c28a-0a69-489f-b1d9-10030700549f.PNG">
 	  </td>
     <td>
-  	<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190690309-fcaf8c91-c023-4087-ab6b-9c0952be721a.PNG">
+  	<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865798-becc144d-25ab-4761-be42-c5db55d63673.PNG">
+    </td>
+  </tr>
+</table>
+
+
+
+<table style="width:100%">
+  <tr>
+    <td>
+  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865806-a4cec0e7-84c1-482d-8e08-42ce253fc363.PNG">
+	  </td>
+    <td>
+	<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865817-fb24d9e8-985c-4303-bd68-f68e4d439b1b.PNG">
     </td>
   </tr>
 </table>
@@ -118,10 +129,10 @@ Some pictures of the project:
 <table style="width:100%">
   <tr>
     <td>
-  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190690350-38a7793e-c8fb-4098-be20-1d199e25d966.PNG">
+  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865827-7383f8b0-386d-48d9-8c92-63b58ee76e03.PNG">
 	  </td>
     <td>
-	<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190690371-63075270-9c08-448e-ac59-33c5ef7e35e7.PNG">
+	<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865831-cd8539fb-76f7-4778-84fd-95ab63593e7b.PNG">
     </td>
   </tr>
 </table>
@@ -130,32 +141,24 @@ Some pictures of the project:
 <table style="width:100%">
   <tr>
     <td>
-  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190690392-51f51ded-e0d0-4052-8b8d-3049f7f5917d.PNG">
+  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865854-78806b8b-5890-413d-91d2-d4d53b97570e.PNG">
 	  </td>
     <td>
-	<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190690472-49358c98-1816-4b95-b328-1575245473fd.PNG">
+	<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865863-e3e8f8d5-6253-4068-8192-c151e86e1417.PNG">
     </td>
   </tr>
 </table>
 
 
+
 <table style="width:100%">
   <tr>
     <td>
-  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190690548-fcf67e3e-58b0-49cf-92dd-9de2c9842366.PNG">
+  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865876-b5a52c6a-738d-4358-be0d-4a1732e0c576.PN">
 	  </td>
     <td>
-	<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190690576-fe77949d-247c-41a9-8ab8-e6f0001d5472.PNG">
+	<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190865886-c2596471-2126-4d2e-bb43-5c447d4c3a95.PNG">
     </td>
-  </tr>
-</table>
-
-
-<table style="width:100%">
-  <tr>
-    <td>
-  		<img width="450" alt="Image" src="https://user-images.githubusercontent.com/56041525/190690640-bdb1b8d6-0da6-4c24-a3a3-511fb8c0e03f.PNG">
-	  </td>
   </tr>
 </table>
 
