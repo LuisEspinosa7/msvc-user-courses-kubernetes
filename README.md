@@ -75,7 +75,7 @@ dependecy injection, inversion of control, abstractions, design patterns and mor
 ## Video
 A video exposing the functionality of the proyect in AWS EKS
 
-1. https://youtu.be/6ELtLr9F4PM
+1. https://youtu.be/4WJoVarj3QY
 
 
 ## MINIKUBE (KUBERNETES LOLCA) implementation:
