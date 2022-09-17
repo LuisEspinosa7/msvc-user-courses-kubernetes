@@ -6,9 +6,9 @@ spec:
   capacity:
      storage: 2Gi
   volumeMode: Filesystem
-  storageClassName: standard
+  storageClassName: ""
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: /var/lib/postgresql/data
-    type: DirectoryOrCreate
+    - ReadWriteMany
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: fs-06c2c47d4fb617028

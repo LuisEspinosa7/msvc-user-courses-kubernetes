@@ -1,105 +1,62 @@
-### KUBERNETES INSTRUCTIONS ####
+##################################################
+########## DEPLOY ON AWS EKS #####################
+##################################################
 
+- CREATE ROLE FOR EKS 
+    https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html#create-service-role
+- CREATE VPCs THROUGHT CLOUDFORMATION. 
+    https://docs.aws.amazon.com/eks/latest/userguide/creating-a-vpc.html#create-vpc
+- CREATE CLUSTER EKS.
+- CHANGE KUBECTL&MINIKUBE TO KUBECTL&AMAZON COMMUNICATION.
+- CONFIGURE CLI 
+    https://aws.amazon.com/es/cli/
+    aws configure
+- CHANGE CONFIG
+    aws eks --region us-east-1 update-kubeconfig --name k8s-courses-users
+- USE KUBECTL
+     kubectl get pods
+- CREATE NODE GROUP
+    - CONFIGURE ROLES FOR EC2 (AmazonEKSWorkerNodePolicy, AmazonEKS_CNI_Policy, AmazonEC2ContainerRegistryReadOnly)
+    - APPLY ROLE TO NODE GROUP.
+    - CREATE THE NODES. (EC2 MACHINES AUTOMATICALLY)
+- CONFIGURE VOLUME EFS FOR MYSQL WITH CSI Container Storage Interface.
+    - EFS NEW
+    - CONFIGURE SECURITY GROUP FOR THE SUBNETS FOR NFS WITH THE IPv4 CIDR 192.168.0.0/16
+    - ON NETWORK ACCESS FOR EFS WE HAVE TO SELECT THAT SECURITY GROUP.
+- CONFIGURE VOLUME EFS FOR POSTGRES WITH CSI Container Storage Interface.
+    - EFS NEW
+    - SELECT THE PREVIOUS SECURITY GROUP IPv4 CIDR 192.168.0.0/16
+    - ON NETWORK ACCESS FOR EFS WE HAVE TO SELECT THAT SECURITY GROUP.
+- INSTALL Amazon EFS CSI Driver INSIDE KUBERNETES 
+    - https://github.com/kubernetes-sigs/aws-efs-csi-driver
+    - STABLE VERSION
+        kubectl apply -k "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.3"
+- APPLY ALL THE RESOURCES (CHANGE FIRST YOUR PERSISTENT VOLUMES WITH YOURS IN AWS)
 
-https://kubernetes.io/docs/tasks/tools/
-
-https://minikube.sigs.k8s.io/docs/start/
-
-https://stackoverflow.com/questions/62539604/how-to-access-nodeport-in-minikube-with-docker-driver
-
-> DRIVER
-minikube start --driver=docker
-
-> PLAYGROUND
-- MYSQL
-kubectl.exe create deployment mysql8 --image=mysql:8 --port=3306 --dry-run=client -o yaml > deployment-mysql.yaml
-
-kubectl.exe apply -f .\deployment-mysql.yaml
-
-kubectl.exe expose deployment mysql8 --port=3306 --type=ClusterIP
-
-kubectl get service mysql8 -o yaml > svc-mysql.yaml
-
-kubectl.exe get services
-
-kubectl.exe describe svc mysql8
-
-- USUARIOS
-kubectl.exe create deployment msvc-usuarios --image=luisllanos8/usuarios --port=8001 
-kubectl create deployment msvc-usuarios --image=luisllanos8/usuarios:latest --port=8001 --dry-run=client -o yaml > deployment-usuarios.yaml
-
-kubectl.exe expose deployment msvc-usuarios --port=8001 --type=LoadBalancer
-
-kubectl.exe get svc
-kubectl get service msvc-usuarios -o yaml > svc-usuarios.yaml
-
-> EXPOSE SERVICE (IMPORTANT--------------------)
-minikube service msvc-usuarios --url
-
-
-> CHANGING IMAGES USUARIOS
-docker build -t usuarios . -f .\msvc-usuarios\Dockerfile
-docker tag usuarios luisllanos8/usuarios (NO SIRVE)
-docker tag usuarios luisllanos8/usuarios:v2
-docker push luisllanos8/usuarios:v2 
-
-
-
-
-> CHANGING IMAGES CURSOS
-docker build -t cursos . -f .\msvc-cursos\Dockerfile
-docker tag cursos luisllanos8/cursos (NO SIRVE)
-docker tag cursos luisllanos8/cursos:v2
-docker push luisllanos8/cursos:v2 
-
-
-> CHANGING IMAGES GATEWAY
-docker build -t gateway . -f .\msvc-gateway\Dockerfile
-docker tag gateway luisllanos8/gateway:latest
-docker push luisllanos8/gateway:latest 
-
-
-> CHANGE POD IN REAL TIME
-kubectl get pods 
-kubectl set image deployment msvc-usuarios usuarios=luisllanos8/usuarios:v2
-
-> SCALE
-kubectl scale deployment msvc-usuarios --replicas=3
-
-> ACCEDER A SERVICIOS
-minikube service msvc-usuarios --url
-minikube service msvc-cursos --url
-
-> RECREATE
-kubectl delete -f .\deployment-usuarios.yaml
-kubectl apply -f .\deployment-usuarios.yaml
-
-
-> CURSOS AND POSTGRES
-kubectl apply -f .\deployment-usuarios.yaml
-kubectl apply -f .\deployment-usuarios.yaml
-
-
-
-
-> SPRING KUBERNETES LIBRARY FOR ACCESING KUBERNETES DETAILS
+- DEPLOYMENT
 kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default
+kubectl apply -f .\configmap.yaml
+kubectl apply -f .\secret.yaml
+kubectl apply -f .\mysql-pv.yaml
+kubectl apply -f .\mysql-pvc.yaml
+kubectl apply -f .\postgres-pv.yaml
+kubectl apply -f .\postgres-pvc.yaml
+kubectl apply -f .\deployment-mysql.yaml
+kubectl apply -f .\deployment-postgres.yaml
+kubectl apply -f .\svc-mysql.yaml
+kubectl apply -f .\svc-postgres.yaml
+
+kubectl apply -f .\deployment-cursos.yaml
+kubectl apply -f .\deployment-usuarios.yaml
+kubectl apply -f .\svc-cursos.yaml
+kubectl apply -f .\svc-usuarios.yaml
+
+kubectl get svc (There should be the load balancer url for each service)
+
+a95b0cc0745de4bd1862a6bc89cba033-271299896.us-east-1.elb.amazonaws.com (USERS)
+a609bb69aa6e042b59da3c3e8ac15308-1998659544.us-east-1.elb.amazonaws.com (Courses)
 
 
-> TEST LOAD BALANCING
-disable the keep-alive header on postman
-
-> HEALTH CHECKS
-livenessProbe
-readinessProbe
 
 
-> RESOURCES REQUESTS AND LIMIT
-MEMORY in Megabytes
-CPU in MiliCores  -> 1 Core = 1000 MiliCores
-
-
-> GATEWAY DEPLOY AND SVC
-kubectl apply -f .\gateway.yaml
-minikube service msvc-gateway --url
 
